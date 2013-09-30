@@ -1,97 +1,153 @@
 <!DOCTYPE html>
 <html>
-<head>
-<script src="jquery.js"></script>
-<script src="Calculation.js"></script>
-<script src="jquery_beam.js"></script>
-<script src="Analysis.js"></script>
-<link rel="stylesheet" type="text/css" href="beam_styles.css">
-<meta charset="ISO-8859-1">
-<title>Beam Analysis</title>
-</head>
-<body>
-<button id="togeo">Span Geometry</button><button id="toloads">Loads</button><button id="tocombo">Load Combinations</button><button id="run">Run Analysis</button><button id="tores">Results</button>
-<div id="geo">
-<h1>Span Geometry</h1>
-<p>No. of Spans: <input id="spans" value="1"></input></p>
-<table id="par">
-<tr>
-<th>Support</th><th>Span #</th><th>Length</th><th>E</th><th>I</th>
-</tr>
-<tr id="srow1">
-<td>
-<select id="support1">
-  <option value="pinned">Pinned</option>
-  <option value="fixed">Fixed</option>
-  <option value="free">Free</option>
-  <option value="slider">Slider</option>
-</select>
-</td>
-</tr>
-<tr id="inrow1">
-<td class="noborder"></td><th>1</th><td><input id="L1"></input></td><td><input id="E1"></input></td>
-<td><input id="I1"></input></td>
-</tr>
-<tr>
-<td>
-<select id="support2">
-  <option value="pinned">Pinned</option>
-  <option value="fixed">Fixed</option>
-  <option value="free">Free</option>
-  <option value="slider">Slider</option>
-</select>
-</td>
-</tr>
-</table>
-</div>
-
-<div id="loads" class="secondary">
-<h1>Loads</h1>
-<table id="loadsin">
-<tr><th>Span #</th><th>Load Case</th><th>Load Type</th><th>Load Info.</th></tr>
-<tr>
-<td><select id="loadspan_in" class="new_loadspan"></select></td>
-<td><select id="loadcase_in" class="loadcase">	
-</select>
-</td>
-<td><select id="loadtype_in" class="loadtype" class="Ltype_changed">
-	<option value="point">Point Load</option>
-	<option value="uniform">Uniform Load</option>
-</select>
-</td>
-<td id="loadinfo_in" class="loadinfo"></td>
-</tr>
-<tr><td colspan="4" class="noborder"><button id="accept_load">Accept</button></td>
-</table><br>
-<button id="add_load">Add Load</button>
-<table id="loadtable" class="noborder">
-<tr class="noborder"><td class="noborder">
-<table id="span1loads">
-<tr><th colspan="3">Span 1</th></tr>
-<tr><th>Load Case</th><th>Load Type</th><th>Load Info.</th></tr>
-<tr><td id="noLoads1" colspan="5">No Loads Entered</td></tr>
-</table></td></tr>
-</table><br>
-
-
-</div>
-
-<div id="combo" class="secondary">
-<h1>Load Combinations</h1>
-<table id="combo_table">
-<tr><td id="noCombo" colspan="5">No Load Combination Defined</td></tr>
-</table>
-</div>
-
-<div id="results" class="secondary">
-<h1>Analysis Results</h1>
-<table id="res_table">
-<tr><td id="noRun" colspan="5">Analysis Not Run</td></tr>
-</table>
-<table id="vmd_table">
-<tr><td class="noborder"></td><th>V</th><th>M</th><th>D</th></tr>
-</table>
-</div>
-
-</body>
+ <head>
+<script src="js/jquery.js"></script><script src="js/Calculation.js"></script><script src="js/jquery_beam.js"></script><script src="js/Analysis.js"></script>  <link href="css/beam_styles.css" rel="stylesheet" type="text/css" />
+  <meta charset="ISO-8859-1" />
+  <title>Beam Analysis</title>
+ </head>
+ <body>
+  <button id="togeo">Span Geometry</button><button id="toloads">Loads</button><button id="tocombo">Load Combinations</button><button id="run">Run Analysis</button><button id="tores">Results</button>
+  <div id="geo">
+   <h1>
+    Span Geometry</h1>
+   <p>
+    No. of Spans: <input id="spans" value="1" /></p>
+   <table id="par">
+    <tbody>
+     <tr>
+      <th>
+       Support</th>
+      <th>
+       Span #</th>
+      <th>
+       Length</th>
+      <th>
+       E</th>
+      <th>
+       I</th>
+     </tr>
+     <tr id="srow1">
+      <td>
+       <select id="support1"><option value="pinned">Pinned</option><option value="fixed">Fixed</option><option value="free">Free</option><option value="slider">Slider</option></select></td>
+     </tr>
+     <tr id="inrow1">
+      <td class="noborder">
+       &nbsp;</td>
+      <th>
+       1</th>
+      <td>
+       <input id="L1" /></td>
+      <td>
+       <input id="E1" /></td>
+      <td>
+       <input id="I1" /></td>
+     </tr>
+     <tr>
+      <td>
+       <select id="support2"><option value="pinned">Pinned</option><option value="fixed">Fixed</option><option value="free">Free</option><option value="slider">Slider</option></select></td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="secondary" id="loads">
+   <h1>
+    Loads</h1>
+   <table id="loadsin">
+    <tbody>
+     <tr>
+      <th>
+       Span #</th>
+      <th>
+       Load Case</th>
+      <th>
+       Load Type</th>
+      <th>
+       Load Info.</th>
+     </tr>
+     <tr>
+      <td>
+       <select class="new_loadspan" id="loadspan_in"></select></td>
+      <td>
+       <select class="loadcase" id="loadcase_in"> </select></td>
+      <td>
+       <select class="loadtype" id="loadtype_in"><option value="point">Point Load</option><option value="uniform">Uniform Load</option></select></td>
+      <td class="loadinfo" id="loadinfo_in">
+       &nbsp;</td>
+     </tr>
+     <tr>
+      <td class="noborder" colspan="4">
+       <button id="accept_load">Accept</button></td>
+     </tr>
+    </tbody>
+   </table>
+   <br />
+   <button id="add_load">Add Load</button>
+   <table class="noborder" id="loadtable">
+    <tbody>
+     <tr class="noborder">
+      <td class="noborder">
+       <table id="span1loads">
+        <tbody>
+         <tr>
+          <th colspan="3">
+           Span 1</th>
+         </tr>
+         <tr>
+          <th>
+           Load Case</th>
+          <th>
+           Load Type</th>
+          <th>
+           Load Info.</th>
+         </tr>
+         <tr>
+          <td colspan="5" id="noLoads1">
+           No Loads Entered</td>
+         </tr>
+        </tbody>
+       </table>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="secondary" id="combo">
+   <h1>
+    Load Combinations</h1>
+   <table id="combo_table">
+    <tbody>
+     <tr>
+      <td colspan="5" id="noCombo">
+       No Load Combination Defined</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="secondary" id="results">
+   <h1>
+    Analysis Results</h1>
+   <table id="res_table">
+    <tbody>
+     <tr>
+      <td colspan="5" id="noRun">
+       Analysis Not Run</td>
+     </tr>
+    </tbody>
+   </table>
+   <table id="vmd_table">
+    <tbody>
+     <tr>
+      <td class="noborder">
+       &nbsp;</td>
+      <th>
+       V</th>
+      <th>
+       M</th>
+      <th>
+       D</th>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </body>
 </html>
