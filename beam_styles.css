@@ -1,0 +1,36 @@
+@CHARSET "ISO-8859-1";
+
+table, th, td
+	 {border: 1px solid black;}
+	 
+td
+	{text-align: center;}
+	
+input
+	{size: 8;}
+		
+.noborder
+	{border: none;}
+	
+#blah
+	{border: none;
+	 height: inherit;}
+
+.blank
+	{height: 100px;}
+
+#geo
+	{background-color: #F0FFFF}
+	
+.secondary
+	{display:none}
+	
+#loads
+	{background-color: #98FB98}
+	
+#results
+	{background-color: #5F9EA0}
+	
+#loadsin, #vmd_table
+	{display:none}
+	
